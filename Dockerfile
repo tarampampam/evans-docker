@@ -22,12 +22,13 @@ WORKDIR /tmp/rootfs
 
 # prepare the rootfs for scratch
 RUN set -x \
-    && mkdir -p ./bin ./etc/ssl ./tmp ./mount \
+    && mkdir -p ./bin ./etc/ssl ./tmp ./mount ./.config/evans ./.cache \
     && mv /tmp/dist/evans ./bin/evans \
     && echo 'evans:x:10001:10001::/tmp:/sbin/nologin' > ./etc/passwd \
     && echo 'evans:x:10001:' > ./etc/group \
     && cp -R /etc/ssl/certs ./etc/ssl/certs \
-    && chmod -R 777 ./tmp ./mount
+    && chown -R 10001:10001 ./.config ./.cache \
+    && chmod -R 777 ./tmp ./mount ./.config ./.cache
 
 # use empty filesystem
 FROM scratch as runtime
@@ -46,6 +47,8 @@ USER 10001:10001
 
 # import from builder
 COPY --from=builder /tmp/rootfs /
+
+ENV HOME="/tmp"
 
 WORKDIR "/mount"
 

@@ -35,7 +35,7 @@ Image: ghcr.io/tarampampam/evans:0.10.5
 Default working directory is `/mount`:
 
 ```bash
-$ docker run --rm -v "$(pwd):/mount" \
+$ docker run --rm -v "$(pwd):/mount:ro" \
     ghcr.io/tarampampam/evans:0.10.5 \
       --path ./path/to/dir/with/proto/files \
       --proto file-name.proto \
