@@ -39,7 +39,7 @@ jobs: # Docs: <https://git.io/JvxXE>
           context: .
           file: Dockerfile
           platforms: linux/386,linux/amd64,linux/arm64,linux/arm/v6
-          push: false
+          push: true
           tags: app:ci
 
       - name: Scan image
