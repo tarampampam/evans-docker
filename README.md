@@ -64,7 +64,7 @@ Image: ghcr.io/tarampampam/evans:latest
    - linux/arm/v6
 ```
 
-### Usage example
+### Usage examples
 
 Default working directory is `/mount`:
 
@@ -120,8 +120,6 @@ function evans() { # https://github.com/tarampampam/evans-docker#usage-example
 $ evans -v
 evans 0.10.6
 ```
-
-> **Important notice**: by default processes in docker image will be run using **unprivileged** user. If you will have any problems with this (for example - writing something in mounted volumes will fails) you may use `docker run ... --user 0:0 ...` argument.
 
 ## Releasing
 
