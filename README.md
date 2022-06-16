@@ -13,9 +13,6 @@
 Docker image with [evans][evans]. Documentation can be found [here][evans]. Quick usage help:
 
 ```shell
-$ evans -h
-evans 0.10.6
-
 Usage: evans [global options ...] <command>
 
 Options:
