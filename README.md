@@ -23,25 +23,57 @@ All supported image tags [can be found here](https://github.com/tarampampam/evan
 
 Following platforms for this image are available:
 
-```bash
-$ docker run --rm mplatform/mquery ghcr.io/tarampampam/evans:0.10.5
-Image: ghcr.io/tarampampam/evans:0.10.5
+```shell
+$ docker run --rm mplatform/mquery ghcr.io/tarampampam/evans:latest
+Image: ghcr.io/tarampampam/evans:latest
  * Manifest List: Yes
- * Supported platforms: # TODO update this list
+ * Supported platforms:
+   - linux/386
+   - linux/amd64
+   - linux/arm64
+   - linux/arm/v6
 ```
 
 ### Usage example
 
 Default working directory is `/mount`:
 
-```bash
+```shell
 $ docker run --rm -v "$(pwd):/mount:ro" \
-    ghcr.io/tarampampam/evans:0.10.5 \
+    ghcr.io/tarampampam/evans:latest \
       --path ./path/to/dir/with/proto/files \
       --proto file-name.proto \
       --host example.com \
       --port 50051 \
       repl
+```
+
+Or you can use `docker-compose`:
+
+```yaml
+version: '3.4'
+
+services:
+  app:
+    # ...
+    ports:
+      - '50051:50051/tcp'
+    #healthcheck:
+    #  test: ['CMD', '/healthcheck', 'command', 'here']
+    #  interval: 4s
+    #  timeout: 1s
+    #  start_period: 5s
+
+  evans:
+    image: evans:local
+    volumes:
+      - .:/mount:ro
+    #depends_on:
+    #  app: {condition: service_healthy}
+```
+
+```shell
+$ docker-compose run evans --path ./path/to/dir/with/proto/files --proto file-name.proto --host app --port 50051 repl
 ```
 
 > **Important notice**: by default processes in docker image will be run using **unprivileged** user. If you will have any problems with this (for example - writing something in mounted volumes will fails) you may use `docker run ... --user 0:0 ...` argument.
