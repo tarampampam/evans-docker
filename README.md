@@ -10,8 +10,38 @@
 
 ## What includes this image?
 
-Docker image with [evans][evans]. Documentation can be found [here][evans].
+Docker image with [evans][evans]. Documentation can be found [here][evans]. Quick usage help:
 
+```shell
+$ evans -h
+evans 0.10.6
+
+Usage: evans [global options ...] <command>
+
+Options:
+        --silent, -s               hide redundant output (default "false")
+        --path strings             comma-separated proto file paths (default "[]")
+        --proto strings            comma-separated proto file names (default "[]")
+        --host string              gRPC server host
+        --port, -p string          gRPC server port (default "50051")
+        --header slice of strings  default headers that set to each requests (example: foo=bar) (default "[]")
+        --web                      use gRPC-Web protocol (default "false")
+        --reflection, -r           use gRPC reflection (default "false")
+        --tls, -t                  use a secure TLS connection (default "false")
+        --cacert string            the CA certificate file for verifying the server
+        --cert string              the certificate file for mutual TLS auth. it must be provided with --certkey.
+        --certkey string           the private key file for mutual TLS auth. it must be provided with --cert.
+        --servername string        override the server name used to verify the hostname (ignored if --tls is disabled)
+        --edit, -e                 edit the project config file by using $EDITOR (default "false")
+        --edit-global              edit the global config file by using $EDITOR (default "false")
+        --verbose                  verbose output (default "false")
+        --version, -v              display version and exit (default "false")
+        --help, -h                 display help text and exit (default "false")
+
+Available Commands:
+        cli         CLI mode
+        repl        REPL mode
+```
 
 ## Docker image
 
