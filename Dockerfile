@@ -22,8 +22,8 @@ WORKDIR /tmp/rootfs
 
 # prepare the rootfs for scratch
 RUN set -x \
-    && mkdir -p ./bin ./etc/ssl ./tmp \
-    && mv /tmp/dist/evans ./bin/evans ./mount \
+    && mkdir -p ./bin ./etc/ssl ./tmp ./mount \
+    && mv /tmp/dist/evans ./bin/evans \
     && echo 'evans:x:10001:10001::/tmp:/sbin/nologin' > ./etc/passwd \
     && echo 'evans:x:10001:' > ./etc/group \
     && cp -R /etc/ssl/certs ./etc/ssl/certs \
