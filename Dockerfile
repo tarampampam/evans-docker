@@ -3,7 +3,7 @@
 FROM alpine:latest as builder
 
 # renovate: source=github-tags name=ktr0731/evans
-ARG EVANS_VERSION=0.10.5
+ARG EVANS_VERSION=0.10.6
 
 RUN set -x \
     && case "$(apk --print-arch)" in \
