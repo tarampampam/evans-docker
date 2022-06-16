@@ -48,8 +48,6 @@ USER 10001:10001
 # import from builder
 COPY --from=builder /tmp/rootfs /
 
-ENV HOME="/tmp"
-
 WORKDIR "/mount"
 
 ENTRYPOINT ["/bin/evans"]
