@@ -106,6 +106,21 @@ services:
 $ docker-compose run evans --path ./path/to/dir/with/proto/files --proto file-name.proto --host app --port 50051 repl
 ```
 
+One more option is to put the following code in your shell initialization script (`~/.profile`, `~/.bashrc`):
+
+```bash
+function evans() { # https://github.com/tarampampam/evans-docker#usage-example
+  docker run --rm -it \
+    -v "$(pwd):/mount:ro" \
+    ghcr.io/tarampampam/evans:latest $@
+}
+```
+
+```shell
+$ evans -v
+evans 0.10.6
+```
+
 > **Important notice**: by default processes in docker image will be run using **unprivileged** user. If you will have any problems with this (for example - writing something in mounted volumes will fails) you may use `docker run ... --user 0:0 ...` argument.
 
 ## Releasing
