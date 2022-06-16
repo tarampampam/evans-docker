@@ -65,7 +65,7 @@ services:
     #  start_period: 5s
 
   evans:
-    image: evans:local
+    image: ghcr.io/tarampampam/evans:latest
     volumes:
       - .:/mount:ro
     #depends_on:
