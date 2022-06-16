@@ -6,7 +6,8 @@ FROM alpine:latest as builder
 ARG EVANS_VERSION=0.10.6
 
 RUN set -x \
-    && case "$(apk --print-arch)" in \
+    && export apkArch="$(apk --print-arch)" \
+    && case "$apkArch" in \
         armhf) DIST_ARCHIVE_FILE_NAME='evans_linux_arm.tar.gz' ;; \
         aarch64) DIST_ARCHIVE_FILE_NAME='evans_linux_arm64.tar.gz' ;; \
         x86_64) DIST_ARCHIVE_FILE_NAME='evans_linux_amd64.tar.gz' ;; \
