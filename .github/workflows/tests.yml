@@ -41,3 +41,10 @@ jobs: # Docs: <https://git.io/JvxXE>
           platforms: linux/386,linux/amd64,linux/arm64,linux/arm/v6
           push: false
           tags: app:ci
+
+      - name: Scan image
+        uses: anchore/scan-action@v3 # action page: <https://github.com/anchore/scan-action>
+        with:
+          image: app:ci
+          fail-build: true
+          severity-cutoff: low # negligible, low, medium, high or critical
