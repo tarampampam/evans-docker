@@ -106,7 +106,7 @@ services:
 $ docker-compose run evans --path ./path/to/dir/with/proto/files --proto file-name.proto --host app --port 50051 repl
 ```
 
-One more option is to put the following code in your shell initialization script (`~/.profile`, `~/.bashrc`):
+One more option is to put the following code in your shell initialization script (`~/.profile`, `~/.bashrc`, `~/.zshrc`, etc):
 
 ```bash
 function evans() { # https://github.com/tarampampam/evans-docker#usage-example
