@@ -78,7 +78,7 @@ $ docker run --rm -v "$(pwd):/mount:ro" \
 Or you can use `docker-compose`:
 
 ```yaml
-version: '3.4'
+version: '3.8'
 
 services:
   app:
